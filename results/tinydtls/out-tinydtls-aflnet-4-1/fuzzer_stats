@@ -1,0 +1,30 @@
+start_time        : 1660559677
+last_update       : 1660563177
+fuzzer_pid        : 9
+cycles_done       : 8
+execs_done        : 9391
+execs_per_sec     : 2.94
+paths_total       : 138
+paths_favored     : 18
+paths_found       : 134
+paths_imported    : 0
+max_depth         : 4
+cur_path          : 0
+pending_favs      : 1
+pending_total     : 126
+variable_paths    : 0
+stability         : 100.00%
+bitmap_cvg        : 1.07%
+unique_crashes    : 14
+unique_hangs      : 0
+last_path         : 1660563093
+last_crash        : 1660561436
+last_hang         : 0
+execs_since_crash : 4612
+exec_timeout      : 520
+afl_banner        : dtls-server
+afl_version       : 2.56b
+target_mode       : default
+command_line      : /home/ubuntu/aflnet/afl-fuzz -d -i /home/ubuntu/experiments/in-dtls -o out-tinydtls-aflnet-4 -N udp://127.0.0.1/20220 -P DTLS12 -D 10000 -q 3 -s 3 -E -K -W 30 -m none ./tinydtls/tests/dtls-server
+slowest_exec_ms   : 0
+peak_rss_mb       : not available while afl is running

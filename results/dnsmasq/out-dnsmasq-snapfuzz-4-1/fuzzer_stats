@@ -1,0 +1,30 @@
+start_time        : 1660642854
+last_update       : 1660650050
+fuzzer_pid        : 8
+cycles_done       : 79
+execs_done        : 1746937
+execs_per_sec     : 252.40
+paths_total       : 308
+paths_favored     : 30
+paths_found       : 307
+paths_imported    : 0
+max_depth         : 11
+cur_path          : 291
+pending_favs      : 0
+pending_total     : 55
+variable_paths    : 21
+stability         : 99.09%
+bitmap_cvg        : 1.17%
+unique_crashes    : 44
+unique_hangs      : 0
+last_path         : 1660650022
+last_crash        : 1660649590
+last_hang         : 0
+execs_since_crash : 115064
+exec_timeout      : 5000
+afl_banner        : dnsmasq
+afl_version       : 2.56b
+target_mode       : sabre deferred 
+command_line      : /home/ubuntu/snapfuzz/aflnet/afl-fuzz -d -i /home/ubuntu/experiments/in-dns -o out-dnsmasq-snapfuzz-4 -N udp://127.0.0.1/5353 -P DNS -D 10000 -K -R -q 3 -s 3 -m none -t 5000 -A /home/ubuntu/snapfuzz/snapfuzz/build/plugins/sbr-afl/libsbr-afl.so ./dnsmasq
+slowest_exec_ms   : 31
+peak_rss_mb       : 39
