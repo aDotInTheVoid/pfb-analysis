@@ -133,9 +133,6 @@ def argigate_rows(rows: typing.List[TableRow]) -> TableRow:
     assert len(set(fuzzers)) == 1, f"Duplucate fuzzers in {fuzzers}"
     assert len(set(run_nos)) == len(rows)
 
-    print(total_execss)
-    print(ave(total_execss))
-
     return TableRow(
         fuzzer=fuzzers[0],
         run_no="average",
@@ -156,10 +153,17 @@ def write_all(f, data):
 
     w.writerow(fieldnames)
 
+    def format(x):
+        if isinstance(x, float) or isinstance(x, int):
+            x = float(x)
+            return "{:.2f}".format(x)
+        else:
+            return x
+
     for d in data:
         assert isinstance(d, cls)
         row = dataclasses.astuple(d)
-        w.writerow(row)
+        w.writerow(map(format, row))
 
 
 def main(dir):
@@ -192,5 +196,5 @@ def main(dir):
 
 
 if __name__ == "__main__":
-    [_, dir] = sys.argv
-    main(dir)
+    for i in sys.argv[1:]:
+        main(i)
