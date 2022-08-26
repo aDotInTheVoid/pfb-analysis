@@ -9,7 +9,7 @@ import re
 import csv
 import typing
 
-OUT_DIR_REGEX = re.compile(r"^out-([a-z-]+)-([a-z]+-[0-9]+)-([0-9]+)$")
+OUT_DIR_REGEX = re.compile(r"^out-([a-z-0-9]+)-([a-z]+-[0-9]+)-([0-9]+)$")
 
 
 @dataclass
@@ -133,6 +133,9 @@ def argigate_rows(rows: typing.List[TableRow]) -> TableRow:
     assert len(set(fuzzers)) == 1, f"Duplucate fuzzers in {fuzzers}"
     assert len(set(run_nos)) == len(rows)
 
+    print(total_execss)
+    print(ave(total_execss))
+
     return TableRow(
         fuzzer=fuzzers[0],
         run_no="average",
@@ -184,7 +187,7 @@ def main(dir):
 
     rows.extend(agg_rows)
 
-    with open("data.csv", "w") as f:
+    with open(dir / "agg_stats.csv", "w") as f:
         write_all(f, rows)
 
 
