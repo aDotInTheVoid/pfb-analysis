@@ -1,6 +1,6 @@
 #!/usr/bin/env python3.8
 
-from pprint import pp
+import pprint
 import sys
 from pathlib import Path
 from dataclasses import dataclass
@@ -9,7 +9,12 @@ import re
 import csv
 import typing
 
-OUT_DIR_REGEX = re.compile(r"^out-([a-z-0-9]+)-([a-z]+-[0-9]+)-([0-9]+)$")
+OUT_DIR_REGEX = re.compile(r"^out-([a-z-0-9]+)-([a-z]+)-([0-9]+)$")
+
+
+def pp(x):
+    pprint.pprint(x)
+    return x
 
 
 @dataclass

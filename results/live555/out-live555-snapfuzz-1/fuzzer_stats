@@ -1,0 +1,30 @@
+start_time        : 1662348102
+last_update       : 1662355298
+fuzzer_pid        : 8
+cycles_done       : 27
+execs_done        : 317030
+execs_per_sec     : 34.47
+paths_total       : 957
+paths_favored     : 48
+paths_found       : 950
+paths_imported    : 0
+max_depth         : 6
+cur_path          : 760
+pending_favs      : 4
+pending_total     : 902
+variable_paths    : 251
+stability         : 82.03%
+bitmap_cvg        : 7.69%
+unique_crashes    : 67
+unique_hangs      : 205
+last_path         : 1662355295
+last_crash        : 1662354679
+last_hang         : 1662354722
+execs_since_crash : 25398
+exec_timeout      : 60
+afl_banner        : testOnDemandRTSPServer
+afl_version       : 2.56b
+target_mode       : sabre deferred 
+command_line      : /home/ubuntu/snapfuzz/aflnet/afl-fuzz -d -i /home/ubuntu/experiments/in-rtsp -x /home/ubuntu/experiments/rtsp.dict -o out-live555-snapfuzz -N tcp://127.0.0.1/8554 -A /home/ubuntu/snapfuzz/snapfuzz/build/plugins/sbr-afl/libsbr-afl.so -P RTSP -D 10000 -q 3 -s 3 -E -K -R -m none ./testOnDemandRTSPServer 8554
+slowest_exec_ms   : 46
+peak_rss_mb       : 68

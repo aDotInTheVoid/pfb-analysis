@@ -1,0 +1,30 @@
+start_time        : 1662358744
+last_update       : 1662365940
+fuzzer_pid        : 8
+cycles_done       : 79
+execs_done        : 1425273
+execs_per_sec     : 195.64
+paths_total       : 381
+paths_favored     : 7
+paths_found       : 377
+paths_imported    : 0
+max_depth         : 24
+cur_path          : 212
+pending_favs      : 0
+pending_total     : 181
+variable_paths    : 1
+stability         : 94.59%
+bitmap_cvg        : 0.96%
+unique_crashes    : 40
+unique_hangs      : 0
+last_path         : 1662365852
+last_crash        : 1662361453
+last_hang         : 0
+execs_since_crash : 848011
+exec_timeout      : 20
+afl_banner        : dtls-server
+afl_version       : 2.56b
+target_mode       : sabre deferred 
+command_line      : /home/ubuntu/snapfuzz/aflnet/afl-fuzz -d -i /home/ubuntu/experiments/in-dtls -o out-tinydtls-snapfuzz -N udp://127.0.0.1/20220 -A /home/ubuntu/snapfuzz/snapfuzz/build/plugins/sbr-afl/libsbr-afl.so -P DTLS12 -D 10000 -q 3 -s 3 -E -K -W 30 -m none ./tinydtls/tests/dtls-server
+slowest_exec_ms   : 20
+peak_rss_mb       : 36
