@@ -90,13 +90,17 @@ Blocked on `SYS_statfs` support.
 ## DICOM/Dcmtk
 Segfaults misteriously
 
-## Exim
-
-Sabre exit(0)'s misteriously
-
 ## Kamaillo
 
-Times out
+Deadlock, both waiting on each other
+
+## Exim
+
+Sabre exit(0)'s misteriously. Also tries to `close(-1)`
+
+## OpenSSL
+
+Also exit(0)'s. `close(3)`'s and get EBADFD
 
 ## OpenSSH 
 
