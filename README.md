@@ -22,18 +22,23 @@ Winning
 ![](./results/lightftp/cov_over_time.png)
 
 
-| fuzzer   | run_no  | time_spent | total_execs | ave_execs_per_sec | b_cov_percent | l_cov_percent |
-|---------:|--------:|-----------:|------------:|------------------:|--------------:|--------------:|
-| aflnet   | 1       | 7196.00    | 36570.00    | 5.08              | 41.90         | 61.90         |
-| aflnet   | 2       | 7196.00    | 42099.00    | 5.85              | 40.80         | 59.10         |
-| aflnet   | 3       | 7196.00    | 38651.00    | 5.37              | 43.10         | 63.10         |
-| aflnet   | 4       | 7196.00    | 37753.00    | 5.25              | 42.80         | 63.00         |
-| snapfuzz | 1       | 7196.00    | 131262.00   | 18.24             | 45.30         | 64.60         |
-| snapfuzz | 2       | 7196.00    | 131902.00   | 18.33             | 43.20         | 63.20         |
-| snapfuzz | 3       | 7196.00    | 144742.00   | 20.11             | 43.40         | 63.20         |
-| snapfuzz | 4       | 7196.00    | 68395.00    | 9.50              | 41.00         | 59.40         |
-| aflnet   | average | 7196.00    | 38768.25    | 5.39              | 42.15         | 61.77         |
-| snapfuzz | average | 7196.00    | 119075.25   | 16.55             | 43.23         | 62.60         |
+| fuzzer            | run_no  | time_spent | total_execs | ave_execs_per_sec | b_cov_percent | l_cov_percent |
+|-------------------|---------|------------|-------------|-------------------|---------------|---------------|
+| aflnet            | 1       | 7196.00    | 36570.00    | 5.08              | 41.90         | 61.90         |
+| aflnet            | 2       | 7196.00    | 42099.00    | 5.85              | 40.80         | 59.10         |
+| aflnet            | 3       | 7196.00    | 38651.00    | 5.37              | 43.10         | 63.10         |
+| aflnet            | 4       | 7196.00    | 37753.00    | 5.25              | 42.80         | 63.00         |
+| snapfuzz          | 1       | 7196.00    | 131262.00   | 18.24             | 45.30         | 64.60         |
+| snapfuzz          | 2       | 7196.00    | 131902.00   | 18.33             | 43.20         | 63.20         |
+| snapfuzz          | 3       | 7196.00    | 144742.00   | 20.11             | 43.40         | 63.20         |
+| snapfuzz          | 4       | 7196.00    | 68395.00    | 9.50              | 41.00         | 59.40         |
+| snapfuzznotimeout | 1       | 7196.00    | 232980.00   | 32.38             | 42.10         | 60.20         |
+| snapfuzznotimeout | 2       | 7196.00    | 255951.00   | 35.57             | 43.50         | 63.70         |
+| snapfuzznotimeout | 3       | 7196.00    | 225269.00   | 31.30             | 43.20         | 63.00         |
+| snapfuzznotimeout | 4       | 7196.00    | 233634.00   | 32.47             | 42.70         | 62.00         |
+| aflnet            | average | 7196.00    | 38768.25    | 5.39              | 42.15         | 61.77         |
+| snapfuzz          | average | 7196.00    | 119075.25   | 16.55             | 43.23         | 62.60         |
+| snapfuzznotimeout | average | 7196.00    | 236958.50   | 32.93             | 42.88         | 62.23         |
 
 Now fixed with clock_nanosleep(2). One of the runs was realy bas for some reason.
 
@@ -84,3 +89,28 @@ Blocked on `SYS_statfs` support.
 
 ## DICOM/Dcmtk
 Segfaults misteriously
+
+## Exim
+
+Sabre exit(0)'s misteriously
+
+## Kamaillo
+
+Times out
+
+## OpenSSH 
+
+Fails to send pid accross
+
+```
+[+] Deferred forkserver binary detected.
+[*] Attempting dry run with 'id:000000,orig:ssh.raw'...
+[*] Spinning up the fork server...
+[+] SaBRe handshake OK!
+[+] All right - fork server is up.
+
+[-] PROGRAM ABORT : Fork server is misbehaving (OOM?)
+         Location : run_target(), afl-fuzz.c:3555
+```
+
+https://github.com/andronat/aflnet/blob/2e3fe8e543bc05143f150a305fdd1666e175e1cd/afl-fuzz.c#L3555

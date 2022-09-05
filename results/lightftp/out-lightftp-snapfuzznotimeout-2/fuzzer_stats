@@ -1,0 +1,30 @@
+start_time        : 1662369327
+last_update       : 1662376523
+fuzzer_pid        : 9
+cycles_done       : 135
+execs_done        : 255951
+execs_per_sec     : 31.09
+paths_total       : 476
+paths_favored     : 40
+paths_found       : 474
+paths_imported    : 0
+max_depth         : 10
+cur_path          : 264
+pending_favs      : 0
+pending_total     : 265
+variable_paths    : 180
+stability         : 65.08%
+bitmap_cvg        : 0.99%
+unique_crashes    : 0
+unique_hangs      : 64
+last_path         : 1662376128
+last_crash        : 0
+last_hang         : 1662375709
+execs_since_crash : 255951
+exec_timeout      : 100
+afl_banner        : fftp
+afl_version       : 2.56b
+target_mode       : sabre deferred 
+command_line      : /home/ubuntu/snapfuzz/aflnet/afl-fuzz -d -i /home/ubuntu/experiments/in-ftp -x /home/ubuntu/experiments/ftp.dict -o out-lightftpnotimeout-snapfuzz -N tcp://127.0.0.1/2200 -A /home/ubuntu/snapfuzz/snapfuzz/build/plugins/sbr-afl/libsbr-afl.so -P FTP -D 10000 -q 3 -s 3 -E -K -m none ./fftp fftp.conf 2200
+slowest_exec_ms   : 100
+peak_rss_mb       : 47
