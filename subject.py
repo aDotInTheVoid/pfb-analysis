@@ -12,6 +12,38 @@ import typing
 OUT_DIR_REGEX = re.compile(r"^out-([a-z-0-9]+)-([a-z]+)-([0-9]+)$")
 
 
+# https://github.com/lzakharov/csv2md/blob/master/csv2md/table.py
+class Table:
+    def __init__(self, cells):
+        self.cells = cells
+        self.widths = list(map(max, zip(*[list(map(len, row)) for row in cells])))
+
+    def markdown(self, center_aligned_columns=None, right_aligned_columns=None):
+        def format_row(row):
+            return "| " + " | ".join(row) + " |"
+
+        rows = [
+            format_row([cell.ljust(width) for cell, width in zip(row, self.widths)])
+            for row in self.cells
+        ]
+        separators = ["-" * width for width in self.widths]
+
+        if right_aligned_columns is not None:
+            for column in right_aligned_columns:
+                separators[column] = ("-" * (self.widths[column] - 1)) + ":"
+        if center_aligned_columns is not None:
+            for column in center_aligned_columns:
+                separators[column] = ":" + ("-" * (self.widths[column] - 2)) + ":"
+
+        rows.insert(1, format_row(separators))
+
+        return "\n".join(rows)
+
+    @staticmethod
+    def parse_csv(file, delimiter=",", quotechar='"'):
+        return Table(list(csv.reader(file, delimiter=delimiter, quotechar=quotechar)))
+
+
 def pp(x):
     pprint.pprint(x)
     return x
@@ -198,6 +230,13 @@ def main(dir):
 
     with open(dir / "agg_stats.csv", "w") as f:
         write_all(f, rows)
+
+    # Bad to re-read file, but eh
+    with open(dir / "agg_stats.csv", "r") as f:
+        table = Table.parse_csv(f)
+
+    with open(dir / "README.md", "w") as f:
+        f.write(table.markdown())
 
 
 if __name__ == "__main__":
