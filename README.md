@@ -93,6 +93,8 @@ Segfaults misteriously
 ## Kamaillo
 
 Deadlock, both waiting on each other
+Could be sock_dgram support (socket(AF_INET, SOCK_DGRAM, IPPROTO_IP) = 8)
+
 
 ## Exim
 
@@ -118,3 +120,9 @@ Fails to send pid accross
 ```
 
 https://github.com/andronat/aflnet/blob/2e3fe8e543bc05143f150a305fdd1666e175e1cd/afl-fuzz.c#L3555
+
+## 
+
+- 8 hour runs
+- Check Kamillio/Exim outside docker
+- Try `gdb -p`
